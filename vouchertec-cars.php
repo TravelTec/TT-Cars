@@ -2692,7 +2692,7 @@
 
 			/* Set mail parameters */
 
-			$to = 'raabe@montenegroev.com.br'; 
+			$to = 'sac@traveltec.com.br'; 
 			$subject = "Locação de Veículos - Nova cotação"; 
 			$body = $html; 
 			$headers = "Content-type: text/html"; 
@@ -2708,9 +2708,9 @@
 			]; 
 
 			$custom_mailer = new Mail_Service_Car(); 
-			$custom_mailer->send($_POST['email_order'], 'Pedido efetuado com sucesso!', $body, $headers, $my_attachments); 
-
-			//$custom_mailer->send(get_option( 'admin_email' ), $subject, $body, $headers, $my_attachments);  
+			$custom_mailer->send($_POST['email_order'], 'Pedido efetuado com sucesso!', $body, $headers, $my_attachments);  
+			$custom_mailer->send($to, $subject, $body, $headers, $my_attachments);  
+			$custom_mailer->send(get_option( 'admin_email' ), $subject, $body, $headers, $my_attachments);  
 		}
 		/* FIM FUNÇÃO QUE ENVIA O E-MAIL DA COMPRA */
 
