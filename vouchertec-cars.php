@@ -5,7 +5,7 @@
 		Plugin URI: https://github.com/TravelTec/TT-Cars
 		GitHub Plugin URI: https://github.com/TravelTec/TT-Cars  
 		Description:  O Plugin Travel Tec - Veículos é um plugin desenvolvido para agências e operadoras de turismo que precisam tratar reserva de veículos de fornecedores, com integração ao fornecedor E-htl. 
-		Version: 1.0.0 
+		Version: 1.0.1 
 		Author: Travel Tec 
 		Author URI: https://traveltec.com.br 
 		License: GPLv2  
@@ -114,7 +114,10 @@
 		  				<p style="font-size:17px;line-height: 1.8"> O Plugin <strong>Travel Tec - Veículos</strong> é um plugin desenvolvido para agências e operadoras de turismo que precisam tratar reserva de veículos de fornecedores, com integração ao fornecedor E-htl.</p>
 
 		  				<p style="font-size:17px;line-height: 1.8">Use o shortcode <span class="text-line">[TTBOOKING_MOTOR_RESERVA_CARS]</span>  <button onclick="copyCars('[TTBOOKING_MOTOR_RESERVA_CARS]','#copy_button_cars')" id="copy_button_cars" class="btn btn-sm btn-primary copy-button" data-toggle="tolltip" data-placement="top" tilte="Copiar shortcode">Copiar</button> para adicionar o motor de reserva em qualquer página.</p>
-
+						<?php if ( (shortcode_exists( 'TTBOOKING_MOTOR_RESERVA_FLIGHTS' ) && shortcode_exists( 'TTBOOKING_MOTOR_RESERVA_CARS' ) ) || (shortcode_exists( 'TTBOOKING_MOTOR_RESERVA' ) && shortcode_exists( 'TTBOOKING_MOTOR_RESERVA_CARS' ) ) ){ ?>
+ 
+				                        <p style="font-size:17px;line-height: 1.8">Use o shortcode <span class="text-line">[TTBOOKING_ALL_SERVICES]</span>  <button onclick="copyCars('[TTBOOKING_ALL_SERVICES]','#copy_button_1')" id="copy_button_2" class="btn btn-sm btn-primary copy-button" data-toggle="tolltip" data-placement="top" tilte="Copiar shortcode">Copiar</button> para adicionar o motor de reserva com todos os serviços em qualquer página.</p>
+				                    <?php } ?>
 		  			</div>
 		  			<div class="tab-pane fade" id="profileCars" role="tabpanel" aria-labelledby="profileCars-tab">
 
@@ -252,15 +255,14 @@
 					jQuery("[data-toggle='tooltip']").tooltip();
 
 					jQuery("#copy_button_cars").attr('title', 'Copiar shortcode').tooltip('_fixTitle');
-				});
-
+				}); 
 				function copyCars(text, target) {
-					navigator.clipboard.writeText('[TTBOOKING_MOTOR_RESERVA_CARS]');
-
-					jQuery("#copy_button_cars").attr('title', 'Copiado!').tooltip('_fixTitle').tooltip('show');
-
+					navigator.clipboard.writeText(text);
+	
+					jQuery(target).attr('title', 'Copiado!').tooltip('_fixTitle').tooltip('show');
+	
 					setTimeout(function() {
-						jQuery("#copy_button_cars").attr('title', 'Copiar shortcode').tooltip('_fixTitle').tooltip('show');
+						jQuery(target).attr('title', 'Copiar shortcode').tooltip('_fixTitle').tooltip('show');
 					}, 800);
 				}
 			</script>
