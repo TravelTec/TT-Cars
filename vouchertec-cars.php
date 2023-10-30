@@ -2728,7 +2728,7 @@
 // Adiciona abas de detalhes ao plugin
 function cars_details_tabs($links, $file) {
     // Verifica se é o plugin desejado
-    if (strpos($file, 'vouchertec-flights.php') !== false) {
+    if (strpos($file, 'vouchertec-cars.php') !== false) {
         // Adiciona a aba "Documentação" antes do link de desativar
         $documentation_link = '<span style="font-weight: bold;"><a href="https://traveltec.freshdesk.com/support/solutions/folders/43000592290" target="_blank">Documentação</a></span>';
         
