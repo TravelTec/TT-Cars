@@ -5,7 +5,7 @@
 		Plugin URI: https://github.com/TravelTec/TT-Cars
 		GitHub Plugin URI: https://github.com/TravelTec/TT-Cars  
 		Description:  O Plugin Travel Tec - Veículos é um plugin desenvolvido para agências e operadoras de turismo que precisam tratar reserva de veículos de fornecedores, com integração ao fornecedor E-htl. 
-		Version: 1.0.1 
+		Version: 1.0.2
 		Author: Travel Tec 
 		Author URI: https://traveltec.com.br 
 		License: GPLv2  
@@ -2724,3 +2724,21 @@
 	    wp_enqueue_script( 'sweetalert-cars', 'https://unpkg.com/sweetalert/dist/sweetalert.min.js');  
 	} 
 	/* FIM INSERE SCRIPTS GERAIS */
+
+// Adiciona abas de detalhes ao plugin
+function cars_details_tabs($links, $file) {
+    // Verifica se é o plugin desejado
+    if (strpos($file, 'vouchertec-flights.php') !== false) {
+        // Adiciona a aba "Documentação" antes do link de desativar
+        $documentation_link = '<span style="font-weight: bold;"><a href="https://traveltec.freshdesk.com/support/solutions/folders/43000592290" target="_blank">Documentação</a></span>';
+        
+        // Encontra a posição do link de desativar
+        $deactivate_position = array_search('deactivate', array_keys($links));
+        
+        // Insere o link de documentação diretamente na posição desejada
+        array_splice($links, $deactivate_position, 0, $documentation_link);
+    }
+
+    return $links;
+}
+add_filter('plugin_action_links', 'cars_details_tabs', 10, 2);
